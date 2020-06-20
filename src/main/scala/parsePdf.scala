@@ -112,7 +112,7 @@ object parsePdf extends Logging {
     new PrintWriter(writeLocation) { write(newText); close }
     val tEnd = System.currentTimeMillis()
     logger.debug(s"parsePdf:writeCorpusToFile: Writing corpus to file executed in ${tEnd - tStart}ms ")
-    logger.debug(s"parsePdf:writeCorpusToFile: Number of distinct words in corpus: ${corpusMap.size} ")
+    logger.info(s"parsePdf:writeCorpusToFile: Number of distinct words in corpus: ${corpusMap.size} ")
     logger.trace("parsePdf:writeCorpusToFile::normal_exit")
   }
 
@@ -173,7 +173,7 @@ object parsePdf extends Logging {
     println("--------------------PDF PARSING TOOL--------------------\n\nThis tool allows you to parse pdfs from a given file location and build word corpus from it.\n")
     print("Enter the file location where the pdfs are saved: ")
     val pdfsLocation = scala.io.StdIn.readLine();
-    print("Enter the number of pdfs to parse [Enter -1 to download all pdfs from the site]: ")
+    print("Enter the number of pdfs to parse [Enter -1 to parse all pdfs from the file location]: ")
     val noPdfsParse  =scala.io.StdIn.readLine()
 
     if(isAllDigits(noPdfsParse)) {
